@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/edit_categorie.css' %}">
+    <title>Edit Categories</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Editer les categories</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for category in categories %}
+                <div class="category">
+                    <div>
+                        <label>
+                            <input type="checkbox" name="{{ category.name }}" {% if category.enabled %}checked{% endif %} value="true">
+                            {{ category.name }}
+                        </label>
+                    </div>
+                    <div class="buttons">
+                        <button type="button" class="delete" onclick="confirmDelete('{{ category.id }}')">Supprimer</button>
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit">Save</button>
+        </form>
+        <a href="{% url 'accueil' %}">Retourner à l'accueil</a>
+
+        <script>
+            function confirmDelete(categoryId) {
+                if (confirm("Êtes-vous sûr de vouloir supprimer cette catégorie ?")) {
+                    var form = document.createElement('form');
+                    form.method = 'post';
+                    form.action = '';
+                    var csrfToken = document.querySelector('[name="csrfmiddlewaretoken"]').value;
+                    form.innerHTML = '<input type="hidden" name="csrfmiddlewaretoken" value="' + csrfToken + '">' +
+                                    '<input type="hidden" name="delete_category" value="' + categoryId + '">';
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

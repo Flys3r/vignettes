@@ -47,3 +47,20 @@ def categorie(request):
     else:
         form = CategoryCreationForm()
     return render(request, 'form_categorie.html', {'form': form})
+
+
+def edit_categorie(request):
+    categories = Category.objects.all()
+    
+    if request.method == 'POST':
+        if 'delete_category' in request.POST:
+            category_id = request.POST.get('delete_category')
+            Category.objects.filter(id=category_id).delete()
+        else:
+            for category in categories:
+                checked = request.POST.get(category.name) == 'true'  
+                category.enabled = checked
+                category.save()
+    
+    return render(request, 'edit_categorie.html', {'categories': categories})
+

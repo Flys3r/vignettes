@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'Vignettes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vignette',  
+        'NAME': '',  
         'USER': '',  
         'PASSWORD': '',  
         'HOST': '', 

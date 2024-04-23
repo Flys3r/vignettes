@@ -27,6 +27,7 @@
     <div class="container">
         <h1>Bienvenue sur mon site!</h1>
         <button onclick="window.location.href='{% url 'categorie' %}'">Créer une nouvelle catégorie</button>
+        <button onclick="window.location.href='{% url 'edit_categorie' %}'">Editer une catégorie</button>
 
         <div class="categories">
             {% for categorie in categories_actives %}
@@ -34,6 +35,7 @@
                 <h2>{{ categorie.name }}</h2>
                 <p>Cette catégorie est active</p>
                 <button class="voir-creations">Voir les créations</button>
+    
             </div>
             {% endfor %}
         </div>
