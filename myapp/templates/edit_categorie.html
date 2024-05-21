@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Editer les categories</h1>
+        <h1>Editer les catégories</h1>
         <form method="post">
             {% csrf_token %}
             {% for category in categories %}
@@ -25,9 +25,8 @@
                     </div>
                 </div>
             {% endfor %}
-            <button type="submit">Save</button>
+            <button type="submit" name="save_and_return">Sauvegarder et retourner à l'accueil</button>
         </form>
-        <a href="{% url 'accueil' %}">Retourner à l'accueil</a>
 
         <script>
             function confirmDelete(categoryId) {
@@ -46,3 +45,4 @@
     </div>
 </body>
 </html>
+

@@ -34,8 +34,7 @@
             <div class="categorie">
                 <h2>{{ categorie.name }}</h2>
                 <p>Cette catégorie est active</p>
-                <button class="voir-creations">Voir les créations</button>
-    
+                <button class="voir-creations" onclick="window.location.href='{% url 'vignette' categorie.id %}'">Voir les créations</button>
             </div>
             {% endfor %}
         </div>
@@ -43,4 +42,5 @@
     </div>
 </body>
 </html>
+
 

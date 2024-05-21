@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer une Vignette</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/form_vignette.css' %}">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-left">
+            <img src="{% static 'img/epsi.png' %}" alt="Logo EPSI">
+        </div>
+        <div class="navbar-center">
+            <a href="#" class="navbar-brand">Mon Site</a>
+        </div>
+        <nav class="navbar-right">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="{% url 'accueil' %}" class="nav-link">Accueil</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Créer une Vignette pour la catégorie: {{ category.name }}</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Créer</button>
+        </form>
+    </div>
+</body>
+</html>
+
