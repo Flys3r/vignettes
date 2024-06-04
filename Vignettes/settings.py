@@ -149,3 +149,22 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
     "django.contrib.auth.hashers.ScryptPasswordHasher",
 ]
+
+#python manage.py runserver  
+#pip install argon2-cffi 
+#python.exe -m pip install --upgrade pip  
+#pip install mysqlclient  
+#python -m pip install Pillow 
+#pip install django
+#python manage.py migrate
+
+
+import os
+import sys
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+# Configuration pour les tests
+if 'test' in sys.argv:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'test_media')

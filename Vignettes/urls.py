@@ -11,6 +11,8 @@ urlpatterns = [
     path('edit_categorie/', views.edit_categorie, name='edit_categorie'),
     path('vignette/<int:category_id>/', views.vignette, name='vignette'),
     path('create_card/<int:category_id>/', views.create_card, name='create_card'),
+    path('delete_card/<int:card_id>/', views.delete_card, name='delete_card'),
+    path('update_card/<int:card_id>/', views.update_card, name='update_card'),
 ]
 
 

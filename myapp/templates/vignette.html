@@ -26,11 +26,11 @@
     <div class="container">
         <h1>Cartes pour la catégorie: {{ category.name }}</h1>
         <button onclick="window.location.href='{% url 'create_card' category.id %}'">Créer une Vignette</button>
-        <div class="cards">
+        <div class="categories">
             {% for card in cards %}
-                <div class="card">
+                <div class="categorie">
                     <h2>{{ card.title }}</h2>
-                    <img src="{{ card.image.url }}" alt="{{ card.title }}">
+                    <img src="{{ card.image.url }}" alt="{{ card.title }}" style="max-width: 100%; border-radius: 6px;">
                     {% if card.music %}
                         <p>Musique: <a href="{{ card.music.url }}">Écouter</a></p>
                     {% endif %}
@@ -39,10 +39,16 @@
                     {% endif %}
                     <p>{{ card.description }}</p>
                     <p>Créé par: {{ card.owner.username }} le {{ card.creation_date }}</p>
+                    <div class="buttons">
+                        <form action="{% url 'delete_card' card.id %}" method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="delete">Supprimer</button>
+                        </form>
+                        <button onclick="window.location.href='{% url 'update_card' card.id %}'">Modifier</button>
+                    </div>
                 </div>
             {% endfor %}
         </div>
     </div>
 </body>
 </html>
-

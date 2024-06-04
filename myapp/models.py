@@ -4,6 +4,7 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     name = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)
     magic_number = models.IntegerField()
     role = models.CharField(max_length=50)
     
@@ -21,7 +22,7 @@ class CardSize(models.Model):
 
 class Card(models.Model):
     title = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', null=True, blank=True)
     music = models.FileField(upload_to='music/', null=True, blank=True)
     video = models.FileField(upload_to='videos/', null=True, blank=True)
     description = models.TextField()
