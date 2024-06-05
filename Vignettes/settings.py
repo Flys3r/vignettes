@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'Vignettes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vignette',  
-        'USER': 'root',  
-        'PASSWORD': '',  
+        'NAME': '?????',  
+        'USER': '?????',  
+        'PASSWORD': '?????',  
         'HOST': '127.0.0.1', 
         'PORT': '3306',  
     }
@@ -149,15 +149,6 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
     "django.contrib.auth.hashers.ScryptPasswordHasher",
 ]
-
-#python manage.py runserver  
-#pip install argon2-cffi 
-#python.exe -m pip install --upgrade pip  
-#pip install mysqlclient  
-#python -m pip install Pillow 
-#pip install django
-#python manage.py migrate
-
 
 import os
 import sys
